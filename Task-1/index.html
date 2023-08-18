@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/plugins/animation.gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="script.js" defer></script>
+    <title>Landing Page</title>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url("container.jpg");
+
+        background-size: cover;
+        background-position: center center;
+
+        z-index: -10;
+      }
+
+      .fullview {
+        position: absolute;
+        height: 100vh;
+        width: 100vw;
+
+        z-index: 0;
+      }
+
+      .container {
+        display: flex;
+        width: 70%;
+        margin: 0;
+        background-position: left;
+        background-color: #f8f9fa !important;
+        box-shadow: 0 0 -42px rgba(0, 0, 0, 0.3);
+        border: 2px solid transparent;
+        z-index: 4;
+        border: 0.6px solid;
+        border-image: linear-gradient(to right, #fcf9f9, transparent);
+        z-index: -3;
+        border-image-slice: 30;
+      }
+
+      .left-widget {
+        background-image: url("https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjMtuujkLT_AhWtk1YBHYudBaIQqa4BegQIJhAA&url=https%3A%2F%2Fpixabay.com%2Fimages%2Fsearch%2Fblue%2520backgrounds%2F&usg=AOvVaw3oOgRMmn5xnABjPUcoPsD9");
+        width: 50%;
+        background-position: left;
+        background-size: cover;
+        
+      }
+
+      .bd-example {
+        padding: 0.5rem;
+        margin-right: 0;
+        margin-left: 0px;
+        margin-top: 0px;
+        border-width: 1px;
+        width: 100vw;
+        border-top-left-radius: 0.25rem;
+        border-top-right-radius: 0.25rem;
+      }
+
+      .bg-light {
+        background-color: #fff !important;
+      }
+
+      .navbar-expand-lg {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+      }
+
+      .navbar {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
+
+      .navbar-nav {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .navbar-nav li {
+        margin-right: 10px;
+        margin-left: 30px;
+        list-style: none;
+      }
+
+      .navbar-nav li:first-child {
+        margin-left: 200px;
+      }
+
+      .navbar-nav li:last-child {
+        margin-right: 2px;
+      }
+
+      .navbar-collapse {
+        display: flex;
+        flex-direction: row;
+      }
+
+      .navbar-collapse form {
+        margin-left: 100px;
+        margin-top: 15px;
+      }
+
+      .form-control {
+        font-family: "Courier New", Courier, monospace;
+        height: 40px;
+      }
+
+      .btn {
+        display: flex;
+        flex-wrap: nowrap;
+        cursor: pointer;
+        height: 40px;
+        width: 120px;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        background: red;
+        color: white;
+        font-family: "Courier New", Courier, monospace;
+        font-size: medium;
+        margin-right: 55px;
+      }
+
+      .btn:hover {
+        background-color: black;
+        color: white;
+        text-decoration: underline;
+      }
+
+      .container-fluid {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding-right: var(--bs-gutter-x, 0.75rem);
+        padding-left: var(--bs-gutter-x, 0.75rem);
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+        margin-top: 15px;
+        margin-left: 100px;
+        color: rgba(0, 0, 0, 0.9);
+        text-decoration: none;
+        font-size: 20px;
+        font-family: "Arial", sans-serif;
+      }
+
+      .navbar-brand img {
+        margin-right: 5px;
+      }
+
+      .custom-navbar {
+        height: 50px;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        
+        
+        
+        background: white;
+        z-index: 5;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        animation: fadeInDownSlideAcademy 5s forwards;
+      }
+
+      @keyframes fadeInDownSlideAcademy {
+        0% {
+          top: -5px; 
+          opacity: 0; 
+        }
+        100% {
+          top: 100%; 
+          opacity: 1; 
+        }
+      }
+
+      .nav-item.dropdown:hover .dropdown-menu,
+      .nav-item.dropdown:focus-within .dropdown-menu {
+        display: block;
+        padding-right: 45px;
+
+        position: absolute;
+        top: 40%;
+        margin-top: 0%;
+        margin-left: -45px;
+        width: 150px;
+
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        max-height: 500px;
+      }
+
+      
+
+      .dropdown-item {
+        position: relative;
+        display: flex;
+        width: 100%;
+        left: 0%;
+        top: 0;
+        align-items: left;
+
+        background: white;
+        color: purple;
+        text-align: left;
+        z-index: 1;
+        border-radius: 5px;
+        text-decoration: none;
+        color: black;
+        padding: 10px 15px;
+
+        margin-top: 2.5px;
+      }
+
+      .dropdown-item span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+
+        z-index: -1;
+        border-radius: inherit;
+        transform: rotate(160deg);
+        transform-origin: right;
+        transition: 0.2s;
+      }
+
+      .dropdown-item:hover span {
+        background: purple;
+        transform: rotate(0deg);
+      }
+
+      .dropdown-list {
+        display: flex;
+        padding-top: 0 5px;
+      }
+
+      .nav-link active {
+        display: inline;
+        color: rgba(0, 0, 0, 0.9);
+        text-decoration: none;
+        margin-top: 5px;
+      }
+
+      .nav-link {
+        display: inline;
+        color: rgba(0, 0, 0, 0.7);
+        text-decoration: none;
+        font-size: 20px;
+        margin-left: 10px;
+      }
+
+      .nav-link.active:hover,
+      .nav-link.active:focus-within {
+        color: red;
+      }
+
+      .academy-hover:hover,
+      .zoomable-image:hover img {
+        color: red;
+        transform: scale(1.1);
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .nav-link dropdown-toggle {
+        color: rgba(0, 0, 0, 0.3);
+        text-decoration: none;
+      }
+
+      .services {
+        color: rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+      }
+
+      .disabled {
+        color: rgba(0, 0, 0, 0.3);
+        text-decoration: none;
+      }
+
+      .ac-in,
+      .arrow-left,
+      .arrow-right {
+        display: inline-block;
+      }
+
+      .dropdown-toggle .arrow-left,
+      .dropdown-toggle .arrow-right {
+        position: relative;
+        display: inline-block;
+        width: 15px;
+        height: 5px;
+        background: grey;
+        border-radius: 40px;
+      }
+
+      .dropdown-toggle .arrow-left {
+        left: 12px;
+        transform: rotate(45deg);
+      }
+
+      .dropdown-toggle:hover .arrow-left,
+      .dropdown-toggle:focus-within .arrow-left {
+        transform: rotate(135deg);
+        background-color: red;
+      }
+
+      .dropdown-toggle .arrow-right {
+        transform: rotate(-45deg);
+      }
+
+      .dropdown-toggle:hover .arrow-right,
+      .dropdown-toggle:focus-within .arrow-right {
+        transform: rotate(-135deg);
+        background-color: red;
+      }
+
+      .menu-up {
+        display: flex;
+        background: grey;
+        margin-left: 10px;
+        position: absolute;
+        width: 45px;
+        height: 8px;
+        top: 3px;
+        border-radius: 40px;
+      }
+
+      .menu-mid {
+        display: flex;
+        margin-top: 5.5px;
+        background: grey;
+        position: absolute;
+        width: 55px;
+        height: 8px;
+        top: 13px;
+        border-radius: 40px;
+      }
+
+      .menu-down {
+        display: flex;
+        margin-top: 20px;
+        margin-left: 20px;
+        background: grey;
+        position: absolute;
+        width: 35px;
+        height: 8px;
+        top: 13px;
+        border-radius: 40px;
+      }
+
+      .intro-vid {
+        margin-top: 100px;
+        margin-left: 120px;
+
+        z-index: 1;
+      }
+
+      .image-container {
+        position: relative;
+        width: 100vw;
+
+        z-index: 9999;
+      }
+
+      .image-container img {
+        max-width: 100%;
+        opacity: 1;
+        transition: opacity 1s ease;
+        z-index: 9999;
+      }
+
+      .text-transition .animate-text {
+        position: relative;
+        color: blue;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      .text-transition {
+        width: 446px;
+        overflow: sec;
+        margin-top: 7%;
+        margin-left: 10%;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .text-transition .animate-text.first-text {
+        color: black;
+      }
+
+      .animate-text.second-text:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: #f8f9fa !important;
+        border-left: 2px solid blue;
+        animation: animate 8s steps(24) infinite;
+      }
+
+      @keyframes animate {
+        40%,
+        60% {
+          left: calc(100% + 4px);
+        }
+        100% {
+          left: 0%;
+        }
+      }
+
+      .about.bd-sec {
+        margin-top: 20px;
+        margin-left: 45px;
+        font-weight: 200;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+      }
+
+      .contact-btn,
+      .know-more {
+        display: flex;
+        background-color: rgba(165, 42, 42, 0.509);
+        cursor: pointer;
+        font-family: Garamond;
+        margin-top: 40px;
+        align-items: center;
+        margin-left: 500px;
+        width: 120px;
+        height: 45px;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+      }
+
+      .contact-btn:hover,
+      .know-more:hover {
+        background-color: red;
+        text-decoration: underline;
+      }
+
+      .ai-launch {
+        display: flex;
+        margin-top: 10px;
+        position: relative;
+        width: 100vw;
+        border: 2px solid transparent;
+        
+        justify-content: center;
+        
+        
+        border: 0.9px solid;
+        border-image: linear-gradient(to right, #fcf9f9, transparent);
+
+        border-image-slice: 30;
+      }
+
+      .ai-launch .text-1{
+        opacity: 0.5;
+      }
+
+      .ai-launch .text-2{
+        background-color: #f8f9fa;
+        align-items: center;
+        justify-content: center;
+        padding-left: 20px;
+        margin-right: 40px;
+        opacity: 0.7;
+        color: black;
+        font-family: Garamond;
+        font-weight: 500;
+        font-size: large;
+        margin-left: 30px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pic-slide{
+        position: relative;
+        height: 140px;
+        margin-top: 50px;
+        margin-left: 0px;
+        margin-right: 0px;
+        padding-left: 150px;
+        padding-right: 150px;
+        padding-bottom: 150px;;
+        display: flex;
+        overflow: hidden;
+        cursor: pointer;
+        white-space: nowrap;
+        scroll-behavior: smooth;
+      
+      }
+
+      .pic-slide.dragging{
+        cursor: grab;
+        scroll-behavior: auto;
+      }
+
+      .pic-slide.dragging img{
+        pointer-events: none;
+      }
+
+      .pic-slide .span img{
+
+        height: 340px;
+        object-fit: cover;
+        margin-left: 14px;
+        width: calc(100% / 3);
+      }
+
+      .carousel{
+        align-items: center;
+        justify-content: center;
+        padding-top: 40px;
+        padding-left: 400px;
+        margin-left: 80px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 600;
+        font-size: 20px;
+        
+      }
+
+      .carousel-serv{
+        align-items: center;
+        padding-top: 60px;
+        padding-left: 500px;
+        margin-left: 80px;
+        margin-top: 70px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 600;
+        font-size: 20px;
+        
+      }
+
+    .wrapper{
+      display: flex;
+      position:relative;
+      
+    }
+    
+      .wrapper i{
+        
+        height: 46px;
+        width: 46px;
+        margin-left:80px;
+        margin-right:80px;
+        cursor: pointer;
+        font-size: 1.2rem;
+        text-align:center;
+        line-height: 46px;
+        background: #fff;
+        border-radius: 100%;
+        transform: translateY(220%);
+      }
+
+      .wrapper i:first-child{
+        left: -23px;
+        
+      }
+
+      .wrapper i:last-child{
+        right: -23px;
+        
+      }
+      
+      @media screen and (max-width: 900px) {
+        .pic-slide .span img{
+          width: calc(100% / 2);
+        }
+      }
+
+      @media screen and (max-width: 550px) {
+        .pic-slide .span img{
+          width: 100%;
+        }
+      }
+
+      .essentials{
+        display: flex;
+        padding-top: 80px;
+        padding-left: 50px;
+        margin-bottom: 80px;
+        overflow: hidden;
+        width: 100vw;
+        
+      }
+
+      .essentials .img-left,
+      .essentials .img-right  {
+        position: relative; 
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 180px;
+        margin-bottom: 50px;
+        
+        z-index: 4;
+      }
+
+      .text-left{
+        
+        color: black;
+  background-color: red;
+  width: 190px;
+  margin: 0 200px;
+  padding: 5px;
+  
+
+      }
+
+      .text-right{
+        
+        color: black;
+  background-color: red;
+  width: 190px;
+  margin: 0 -170px;
+  padding: 5px;
+  
+
+      }
+
+      
+      .essentials .img-mid {
+        position: relative;
+        z-index: 2;
+        margin-left: 60px;
+        margin-right: 60px;
+      }
+
+      .text-left.animate-on-scroll {
+        opacity: 0;
+        transform: translateX(-170px);
+        transition: opacity 0.5s, transform 5s ease-in-out;
+      }
+
+      .text-right.animate-on-scroll {
+        opacity: 0;
+        transform: translateX(130px);
+        transition: opacity 0.5s, transform 5s ease-in-out
+      }
+
+      .animateY-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s, transform 5s ease-in-out;
+      }
+
+      
+        .img-master {
+          position: relative;
+          
+        }
+
+        .img-master:hover .master{
+          animation: fadeInDownSlide 1s forwards; 
+        }
+
+      .master {
+        position: absolute;
+        top: 20%; 
+        left: 50%; 
+        transform: translate(-50%, -50%); 
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: black; /* Set the text color */
+        background-color: transparent;
+        padding: 10px 20px;
+        z-index: 1; 
+        opacity: 0; /
+   
+      }
+      
+
+      .col-master {
+        
+        display: inherit;
+        background-color: red;
+        width: 50px;
+        font-size: 30px;
+      }
+
+      @keyframes fadeInDownSlide {
+        0% {
+          top: -50px; 
+          opacity: 0;
+        }
+        100% {
+          top: 20%; 
+          opacity: 1;
+        }
+      }
+
+      .query-form{
+        padding-left: 140px;
+        padding-top: 40px;
+        padding-right: 40px;
+        padding-bottom: 40px;
+        
+      }
+
+      .line {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .line2{
+      display: flex;
+        flex-wrap: wrap;
+      padding-left: 370px;
+    }
+
+    label {
+      display:inline-block
+        flex-basis: 100px;
+        margin-right: 10px;
+    }
+
+    
+    .form-input {
+        display: flex;
+        flex: 1;
+        background-color: transparent;
+        border-bottom: 1px solid #555; 
+        margin-bottom: 0.3px; 
+        margin-bottom: 10px;
+        padding-bottom: 5px;
+    }
+
+    input {
+      display: inline-block;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        flex: 1;
+        font-size: 16px;
+    }
+
+    .footer{
+
+      width: 100vw;
+      background-color: black;
+      color: white;
+    }
+
+    .logo{
+      display: flex;
+      justify-content: center;
+      padding-top: 50px;
+      
+    }
+
+    .additional-info{
+      display: inline-flex;
+      justify-content: space-between;
+      padding-left: 20px;
+      
+    }
+
+    .additional-info span{
+      margin-right: 50px;
+    }
+
+    .loc{
+      
+      width: 150px;
+    }
+
+    .li-check li:hover{
+      color:red;
+      text-decoration: underline;
+    }
+
+.services12{
+  color: white;
+}
+
+    .service1,
+    .service2{
+      display:flex;
+      
+      
+    }
+
+    .service1 span,
+    .service2 span{
+      display: inherit;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      margin-left: 10px;
+    }
+
+    .service2 span:first-child{
+      margin-bottom: 50;
+      color: green;
+      font-size: 200;
+    }
+
+    .email{
+      background-color: white;
+      height:40px;
+      border-radius: 3px;
+    }
+
+    .subscribe{
+        display: flex;
+        background-color: rgba(165, 42, 42, 0.509);
+        cursor: pointer;
+        border-radius: 5px;
+        margin-top: 5px;
+        font-family: Garamond;
+        align-items: center;
+        color: white;
+        width: 120px;
+        height: 45px;
+        justify-content: center;
+        font-size: 20px;
+        color: white;
+    }
+
+    .subscribe:hover{
+      background-color: red;
+      text-decoration: underline;
+    }
+
+    .ham-container{
+      margin-top: 20px;
+      position: relative;
+      cursor: pointer;
+      height: 89px;
+      width: 89px;
+      background: transparent;
+      z-index:3;
+    }
+
+.right-slidebar{
+  
+  position: fixed;
+      
+      display: none;
+      background:  burlywood;
+      color: white;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      margin-top: -92px;
+      text-align: center;
+      margin-right: 3px;
+      width: 500px;
+      height: 700px;
+      right: -35%;
+      top: 60%;
+      z-index: 4;
+      animation: leftSlide 3s forwards;
+}
+
+.ham-container:hover{
+  background-color: red;
+}
+
+
+
+    @keyframes leftSlide {
+      0% {
+        right: -35%;
+        opacity: 0; 
+      }
+      100% {
+      
+        right: 3%;
+        opacity: 1; 
+      }
+
+    }
+
+    .click-leftslide:hover .right-slidebar{
+      display: block;
+      padding-right: 5px;
+
+        position: absolute;
+        top: -2%;
+        margin-top: -5px;;
+        
+        width: 500px;
+      height: 900px;
+
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        max-height: 900px;
+    }
+    
+    
+
+    .right-slidebar .top-bulletins div {
+      margin-bottom: 10px;
+      cursor: pointer;
+  }
+
+  .right-slidebar .email,
+  .right-slidebar .phone,
+  .right-slidebar .website,
+  .right-slidebar .follow {
+      margin-bottom: 60px;
+  }
+
+    .right-slidebar h2 {
+      margin: 0;
+  }
+
+  .career:hover,
+  .blogs:hover,
+  .members:hover,
+  .about:hover{
+    color: black;
+    border-bottom: 2px solid #fff;
+  }
+
+  .em:hover,
+  .wb:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .show-slidebar .right-slidebar {
+    right: 90%;
+    opacity: 1;
+}
+
+
+
+
+
+    </style>
+  </head>
+  <body>
+    <div class="fullview">
+      <section class="sec">
+      <div class="container">
+        <div class="left-widget">
+          <div class="bd-example">
+            <nav
+              class="navbar navbar-expand-lg navbar-light bg-light custom-navbar"
+            >
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#"
+                  ><b
+                    ><img
+                      src="chroma-marketing-essentials.jpg"
+                      height=" 85" /></b
+                ></a>
+
+                <div
+                  class="collapse navbar-collapse"
+                  id="navbarSupportedContent"
+                >
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link active academy-hover dropdown-toggle"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        <b
+                          ><span class="ac-in">Academy </span>
+                          <span class="arrow-left"></span>
+                          <span class="arrow-right"></span>
+                          <div class="dropdown-list">
+                            <ul
+                              class="dropdown-menu"
+                              aria-labelledby="navbarDropdown"
+                            >
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span></span> Build Customer Relations</a
+                                >
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span></span>Create Brands</a
+                                >
+                              </li>
+
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span></span>Ethics & Marketing Mix</a
+                                >
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span></span>The Four PS</a
+                                >
+                              </li>
+                              <li>
+                                <a class="dropdown-item" href="#"
+                                  ><span></span>Competetive Advantage</a
+                                >
+                              </li>
+                            </ul>
+                          </div></b
+                        >
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Franchise</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a
+                        class="nav-link dropdown-toggle services"
+                        href="#"
+                        id="navbarDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                      >
+                        Services
+                      </a>
+                    </li>
+                  </ul>
+                  <form class="d-flex">
+                    <button
+                      class="btn btn-outline-success btn-icon"
+                      type="submit"
+                    >
+                      Get started
+                    </button>
+                  </form>
+
+                  
+
+                  <span class="click-leftslide">
+                    <div class="ham-container" onclick="toggleSlidebar()">
+
+                  <div class="hamburger-menu">
+                    <div class="menu-up"></div>
+                    <div class="menu-mid"></div>
+                    <div class="menu-down"></div>
+                  </div>
+                </div>
+
+                <div class="right-slidebar">
+                  <div class="top-bulletins">
+                      <div class="career"><b>Career</b></div>
+                      <div class="blogs"><b>Blogs & Newsletter</b></div>
+                      <div class="members"><b>Our Customers</b></div>
+                      <div class="about"><b>About</b></div>
+                  </div>
+                  <div class="email" style="background-color: burlywood; margin-top:30px;">
+                      <h2><b>Email</b><h3 class= "em">
+                      services@chromaltd.com</h3>
+                  </div>
+                  <div class="phone">
+                      <h2><b>Phone</b></h2>
+                      <b>(+91) 9163 - 755636</b>
+                  </div>
+                  <div class="website">
+                      <h2>Website</h2>
+                      <h3 class="wb">
+                      www.marketing-essentials.com
+                      </h3>
+                  </div>
+                  <div class="follow">
+                      <h2><b>Follow Chroma Marketing Essentials Ltd.</b></h2>
+                      <br>
+                      <span class="square fab fa-facebook fb" style="margin-right:8px; cursor:pointer;"></span>
+                      <span class="square fab fa-instagram insta" style="margin-right:8px; cursor:pointer;"></span>
+                      <span class="square fab fa-youtube yt" style="margin-right:8px; cursor:pointer;"></span>
+                      <span class="square fab fa-linkedin in" style="margin-right:8px; cursor:pointer;"></span>
+                  </div>
+              </div>
+
+                </span>
+                </div>
+              </div>
+            </nav>
+          </div>
+
+          
+
+
+         
+          <div class="text-transition">
+            
+            <span class="animate-text second-text">Marketing</span>
+          </div>
+
+          <div class="about">
+            <p class="about bd-sec">
+              <b>Strategic. Data-Driven. Resilient.</b> That’s what you get when
+              you partner with Marketing Essentials. Our team of 25+ in-house
+              experts is dedicated to the success of your organization. Whether
+              you need a dynamic, performance-driven campaign or ongoing
+              strategic agency partnership to help accelerate your sales goals,
+              our team can get you exceptional, cost-effective results – and the
+              data to back it up.
+            </p>
+          </div>
+        </div>
+        <div class="intro-vid">
+          <iframe
+            width="560"
+            height="315"
+            src="https://www.youtube.com/embed/QusJ4fpWQwA?autoplay=1&mute=1"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share;"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+      </section>
+      <button class="contact-btn">Contact Us</button>
+
+      <section class="sec animateY-on-scroll">
+      <div class="ai-launch">
+        <span class="text-1"><img src="brand.jpg" width="650" /> </span>
+
+        <span class="text-2"
+          ><b><i><h2>"Our Principals for Using AI in Marketing"</h2></h2></i>
+          <p>
+            AI in marketing is no longer a trend. It’s here to stay. In fact,
+            the hottest AI language tool, ChatGPT, reached 100 million monthly
+            active users in just two months – making it the fastest-growing
+            consumer application in history. ChatGTP, developed by Open AI, can
+            respond to a wide variety of questions and generate content on
+            various topics and in multiple forms in just seconds.
+          
+          </p>
+        </span>
+        
+      </div>
+      
+      
+    </section>
+
+    <section class="sec">
+    <div class="carousel">
+      <h1><b>Find out what suits you the best</b></h1>
+    </div>
+    <div class="wrapper">
+      <i id="left" class="fas fa-angle-left"></i>
+    <div class="pic-slide">
+      
+      <span class="pic1"><img src="email-marketing.png" alt="pic1", draggable="false"></span>
+      <span class="pic2"><img src="affiliate-marketing.jpg" alt="pic2", draggable="false"></span>
+      <span class="pic3"><img src="stock-marketing.png" alt="pic3", draggable="false"></span>
+      <span class="pic4"><img src="digital-marketing.jpg" alt="pic4", draggable="false"></span>
+      <span class="pic3"><img src="buzz-marketing.png" alt="pic5", draggable="false"></span>
+      
+    </div>
+    <i id="right" class="fas fa-angle-right"></i>
+    </div>
+
+    <button class="know-more">Know more</button>
+
+  </section>
+  
+
+
+  <div class="carousel-serv"><h2><b>Services</b></h2></div>
+
+    <div class="essentials">
+      
+      <span class="img-left">
+        <div class="animate-on-scroll text-left">Website Design & Development</div>
+        <div class="animate-on-scroll text-left">Virtual Selling Solutions</div>
+        <div class="animate-on-scroll text-left">eCommerce Design & Development</div>
+        <div class="animate-on-scroll animate-on-scroll text-left">SEO Services</div>
+      </span>
+      <span class="img-mid">
+      <img src="marketing-essentials.jpg" width= "700" height= "600" alt="">
+      </span>
+      <span class="img-right">
+        <div class="animate-on-scroll text-right">Pay Per Click (PPC)</div>
+        <div class="animate-on-scroll text-right">Video Production &Photography</div>
+        <div class="animate-on-scroll text-right">Recruitment Marketing</div>
+        <div class="animate-on-scroll text-right">New Brand Developer</div>
+      </span>
+    </div>
+
+    <div class="img-master">
+  <span><img src="strategy.png" width="100%" alt="">
+  <div class="master"><h1><b>Want to <span class="col-master">Master</span> the Business of Success?</b></h1></div>
+</div>
+
+<div class="query-form">
+  <div class="contactUs-head"><b><h1>Contact Us</h1></b></div>
+  <br>
+  <form action="#" method="post">
+    <div class = "line">
+    <label for="name">Name:</label>
+    <div class="form-input">
+        <input type="text" id="name" name="name" required>
+    </div>
+
+    <label for="city">City:</label>
+    <div class="form-input">
+        <input type="text" id="city" name="city" required>
+    </div>
+
+    <label for="state">State:</label>
+    <div class="form-input">
+        <input type="text" id="state" name="name" required>
+    </div>
+    <br>
+
+    </div>
+    <div class="line2">
+    <label for="phone-number">Mobile:</label>
+    <div class="form-input">
+        <input type="text" id="phone-number" name="phone-number" required>
+    </div>
+
+    <label for="email">Email:</label>
+    <div class="form-input">
+        <input type="text" id="email" name="email" required>
+    </div>
+    <br>
+  </div>
+
+<label for="browse"></label>
+<div class="form-input">
+  <input type="file" name="files[]" multiple="true" autocomplete="off" required>
+</div>
+<br><br>
+
+<label for="inquiry">Inquiry:</label>
+<div class="form-input">
+  <input type="text" id="inquiry" name="inquiry" required>
+</div>
+<br> <br>
+
+
+    <input class="contact-btn submit" type="submit" value="Submit">
+</form>
+</div>
+  
+  <br><br><br>
+
+
+
+  <div class="footer">
+    <div class="logo"><img src="chroma-marketing-essentials.jpg" height="180" alt=""></div>
+    <div class="additional-info">
+      <span class="address">
+        <div class="location"><b><h1>Location</h1></b><br> <p class="loc">Chroma Marketing Essentials Limited <br> Unit # 431/32/33, 4th Floor, Bhandari Mall, Bhandari Industrial Estate, Kalyani (W) West Bengal – 741235, India.</p></div>
+      
+      
+        <div class="telephone"><b><h1>Telephone Enquiry</h1></b>(+91) 9163-755636</div>
+      </span>
+      <span class="salons"><h1><b>Check-out</b></h1>
+        <ul class="li-check" style="list-style:none; display:flex; flex-direction:column; cursor:pointer">
+          <li class="check-1" style="margin-bottom: 20px;">Academy</li>
+          <li class="check-2" style="margin-bottom: 20px;">Franchise</li>
+          <li class="check-3" style="margin-bottom: 20px;">Services</li>
+          <li class="check-4" style="margin-bottom: 20px;">Privacy Policy</li>
+          <li class="check-5" style="margin-bottom: 20px;">Terms & Conditions</li>
+        </ul>
+      </span>
+      <span class="services12">
+        <h1><b>Our Top Services</b></h1>
+        <div class="service1" style="cursor:pointer;"><img src="sales-coaching.jpg" height="160" width="200" alt=""> <span><b>Sales Coaching</b></span></div>
+        <div class="service2" style="cursor:pointer;"><img src="social media marketing.png" alt=""> <span><b> Social Media Marketing</b></span></div>
+      </span>
+      <span class="touch">
+        <div class="newsletter"><h1><b>Newsletter</b></h1><br><input class="email" type="" placeholder="sample@mail.com" required>
+        <button class="subscribe" data-loading="Subscribing...">Subscribe</button></div>
+        <div class="followus">
+          <h1><b>Follow Us</b></h1><br>
+          <span class="fab fa-facebook fb" style="margin-right:8px; cursor:pointer;"><img src="" alt=""></span>
+          <span class="fab fa-instagram insta" style="margin-right:8px; cursor:pointer;"><img src="" alt=""></span>
+          <span class="fab fa-youtube yt " style="margin-right:8px; cursor:pointer;"><img src="" alt=""></span>
+          <span class="fab fa-linkedin in" style="margin-right:8px; cursor:pointer;" cursor:pointer><img src="" alt=""></span>
+          
+          
+      </div>
+      
+      </span>
+    </div>
+  </div>
+
+  
+  </div>
+    
+
+    
+    <script>
+      const text = document.querySelector(".second-text");
+
+      const textLoad = () => {
+        setTimeout(() => {
+          text.textContent = "Marketing.";
+        }, 0);
+        setTimeout(() => {
+          text.textContent = "Sales.";
+        }, 8000);
+        setTimeout(() => {
+          text.textContent = "IT'S ABOUT PEOPLE.";
+        }, 16000);
+        setTimeout(() => {
+          text.textContent = "CREATING RELATIONSHIPS...";
+        }, 24000);
+        setTimeout(() => {
+          text.textContent = "THAT CREATE VALUES.";
+        }, 32000);
+        setTimeout(() => {
+          text.textContent = "STAND OUT.";
+        }, 40000);
+        setTimeout(() => {
+          text.textContent = "CONNECT.";
+        }, 48000);
+        setTimeout(() => {
+          text.textContent = "GROW.";
+        }, 56000);
+        setTimeout(() => {
+          text.textContent = "BE RESILIENT.";
+        }, 64000);
+      };
+
+      textLoad();
+      setInterval(textLoad, 72000);
+    </script>
+
+    <script>
+      
+      var controller = new ScrollMagic.Controller();
+  
+     
+      var animation = gsap.to(".animate-on-scroll", {
+        opacity: 1,
+        x: 0, 
+        duration: 0.5
+      });
+  
+     
+      var scene = new ScrollMagic.Scene({
+        triggerElement: ".animate-on-scroll",
+        triggerHook: 0.8, 
+        reverse: false 
+      })
+      .setTween(animation)
+      .addTo(controller);
+    </script>
+   
+    <script>
+      
+      var controller = new ScrollMagic.Controller();
+  
+      
+      var animation = gsap.to(".animateY-on-scroll", {
+        opacity: 1,
+        y: 0,
+        duration: 0.5
+      });
+  
+      
+      var scene = new ScrollMagic.Scene({
+        triggerElement: ".animateY-on-scroll",
+        triggerHook: 0.8, 
+        reverse: false 
+      })
+      .setTween(animation)
+      .addTo(controller);
+    </script>
+
+    <script>
+      
+      function toggleSlidebar() {
+          var rightSlidebar = document.getElementById('right-slidebar');
+          rightSlidebar.classList.toggle('show-slidebar');
+      }
+  </script>
+
+
+
+  </body>
+</html>
